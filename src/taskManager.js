@@ -3,14 +3,15 @@ import Task from './task.js';
 
  class TaskManager{
     constructor(){
-        this.tasks = []
-        this.loadTasks();
+        this.tasks = [];
+        this.loadTasks()
+        
     }
 
     addTask(title, description, dueDate, priority){
         const task = new Task(title, description, dueDate, priority)
         this.tasks.push(task) 
-        this.saveTasks();
+        this.saveTasks()
         this.displayTask()      
     }
 
@@ -20,29 +21,28 @@ import Task from './task.js';
         task.description = newDescription
         task.dueDate = newDueDate
         task.priority = newPriority
-        this.saveTasks();
+        this.saveTasks()
         this.displayTask()
     }
 
     deleteTask(index){
         this.tasks.splice(index,1)  
-        this.saveTasks();
+        this.saveTasks()
         this.displayTask()      
     }
 
     switchTask(index){
         this.tasks[index].switchCompleted()
-        this.saveTasks();
+        this.saveTasks()
         this.displayTask() 
     }
-
-    saveTasks() {
-        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    saveTasks(){
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
     }
-
-    loadTasks() {
-        const tasks = JSON.parse(localStorage.getItem('tasks'));
-        this.tasks = tasks ? tasks : [];
+    loadTasks(){
+        const tasks = JSON.parse(localStorage.getItem('tasks'))
+        this.tasks = tasks ? tasks : []
+        
     }
 
    displayTask(){
@@ -82,7 +82,6 @@ import Task from './task.js';
         deleteTaskButton.style.marginLeft = '10px'
         deleteTaskButton.addEventListener('click', ()=>{
             this.deleteTask(index);
-           
         })
 
         const editTaskButton = document.createElement("button")
