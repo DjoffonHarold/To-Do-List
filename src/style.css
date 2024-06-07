@@ -1,3 +1,112 @@
-.body{
-    color: aqua;
-}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  input, button, textarea, select {
+    font: inherit;
+  }
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /***************************************/
+  .container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
+  .siderigthbar{
+    grid-column: 2/4;
+    background-color: #f0fdf4;
+  }
+  .buttonSideLeftBar{
+    border: none;
+    border-radius: 5px;
+    background-color: #22c55e;
+  }
+  .buttonAddTask{
+    border: none;
+    border-radius: 5px;
+    background-color: #22c55e;
+  }
+  .sideleftbar{
+    padding-top: 25px;
+    padding-left: 25px;
+    
+  }
+  .form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .input-form{
+    border: none;
+    border-radius: 5px;
+    background-color: #bbf7d0;
+  }
+  .close-form{
+    border: none;
+    border-radius: 5px;
+    background-color: #ef4444
+  }
+  .seclect-form{
+    border: none;
+    border-radius: 5px;
+    background-color: #bbf7d0;
+  }
+  .tasks-list {
+    list-style-type: none;
+    padding: 0;
+    
+  }
+  .task-item {
+    border: 1px solid #fca5a5;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  dialog[open] {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 10px;
+  }
+  dialog {
+  /*display: none;*/
+  }
+  .taskItem{
+    gap: 15px;
+    display: flex;
+    margin-bottom: 5px;
+  }
+  .switchButton{
+    border: none;
+    border-radius: 5px;
+    background-color: #16a34a
+  }
+  .deleteButton{
+    border: none;
+    border-radius: 5px;
+    background-color: #dc2626
+  }
+ 
+
+
+
+
+
