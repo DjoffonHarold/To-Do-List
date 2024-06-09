@@ -40,9 +40,7 @@ import Task from './task.js';
         localStorage.setItem('tasks', JSON.stringify(this.tasks))
     }
     loadTasks(){
-        const tasks = JSON.parse(localStorage.getItem('tasks'))
-        this.tasks = tasks ? tasks : []
-        
+        this.tasks  = JSON.parse(localStorage.getItem('tasks')) || []     
     }
 
    displayTask(){

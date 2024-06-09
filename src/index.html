@@ -8,6 +8,25 @@
 <body>
     <div class="container">
         <div class="sideleftbar">
+            <button class="buttonSide" id="open-dialog-side"> Add Project</button>
+            <dialog class="dialog-form-side" id="open-dialog-project">
+                <form id="task-form-side">
+                    <div class="form-side">
+                          <label for="project">Project</label> <br>
+                          <input class="input-form" type="text" id="project" required>
+                          <div class="submitClose-side">
+                            <button class="buttonAddTask-side" type="submit">Add Task</button>
+                            <button type="button" class="close-form-side"  id="close-dialog-side" >Close</button>
+                         </div>
+
+                    </div>
+                </form>
+            </dialog>
+            <ul class="tasks-list-side" id="tasks-list-side"></ul>
+        </div>
+     
+       
+        <div class="siderigthbar">
             <button class="buttonSideLeftBar" id="open-dialog">To-Do List</button>
 
             <dialog class="dialog-form" id="task-dialog">
@@ -37,14 +56,8 @@
                     </div>                
                   </form>
             </dialog>
-
-        </div>
-       
-        <div class="siderigthbar">
             <ul class="tasks-list" id="tasks-list"></ul>
-        </div>
-         
-          
+        </div>                 
     </div>
 </body>
 </html>

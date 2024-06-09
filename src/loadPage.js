@@ -1,5 +1,6 @@
 
-import TaskManager from './taskManager'
+import TaskManager from './taskManager.js'
+import ProjectManager from './projectManager.js'
 
 function initialLoad(){
         
@@ -16,6 +17,27 @@ document.getElementById('close-dialog').addEventListener('click', function() {
   document.getElementById('task-dialog').close();
 });
 
+document.getElementById('open-dialog-side').addEventListener('click', function() {
+  document.getElementById('open-dialog-project').showModal();
+});
+document.getElementById('close-dialog-side').addEventListener('click', function() {
+  document.getElementById('open-dialog-project').close();
+});
+
+    const projectManager = new ProjectManager()
+    document.getElementById('task-form-side').addEventListener('submit', function(event) {
+      event.preventDefault();
+    
+      const name = document.getElementById('project').value;
+    
+      projectManager.addProject(name);
+    
+      document.getElementById('tasks-list-side').appendChild(projectItem);
+    
+      document.getElementById('task-form-side').reset();
+      document.getElementById('open-dialog-project').close();
+    });
+  
 
     const taskManager = new TaskManager();
     document.getElementById('task-form').addEventListener('submit', function(event) {
