@@ -1,7 +1,7 @@
 import './style.css'
 import initialLoad from './loadPage'
 initialLoad()
-document.addEventListener('DOMContentLoaded', initialLoad())
+//Window.addEventListener("localStorage", initialLoad())
 
 
 /*

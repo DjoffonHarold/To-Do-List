@@ -30,8 +30,17 @@ class ProjectManager{
             const projectItem = document.createElement('div')
             projectItem.classList.add('projectItem')
 
+           /* projectItem.addEventListener('click',()=>{
+                const tasksList = document.querySelector('#tasks-list')
+                while(tasksList.firstChild) { 
+                    tasksList.removeChild(tasksList.firstChild); 
+                }
+                tasksList.appendChild(taskItem)
+            })*/
+
             const NameSpan = document.createElement("span")
             NameSpan.textContent = `${project.name}`;
+           
 
             const editProjectButton = document.createElement("button")
             editProjectButton.classList.add("editProjectButton")
@@ -40,7 +49,7 @@ class ProjectManager{
             editProjectButton.style.marginLeft = '10px'
             editProjectButton.addEventListener('click', ()=>{
             const newName = prompt('newName', project.name)
-            this.editTask(index, newName)
+            this.editProject(index, newName)
             })
 
             const deleteProjectButton = document.createElement("button")
@@ -49,7 +58,7 @@ class ProjectManager{
             deleteProjectButton.style.cursor = 'pointer';
             deleteProjectButton.style.marginLeft = '10px'
             deleteProjectButton.addEventListener('click', ()=>{
-                this.deleteTask(index);
+                this.deleteProject(index);
             })
 
             projectItem.appendChild(NameSpan)

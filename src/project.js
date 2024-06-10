@@ -1,7 +1,8 @@
 class Project{
-    constructor(name){
+    constructor(name,containerId){
          this.name = name
-       
+        
+         
     }
 }
 export default Project

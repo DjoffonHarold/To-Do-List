@@ -3,8 +3,7 @@ import Task from './task.js';
 
  class TaskManager{
     constructor(){
-        this.tasks = [];
-        this.loadTasks()
+        this.tasks =  this.loadTasks() || [];
         
     }
 
@@ -37,10 +36,11 @@ import Task from './task.js';
         this.displayTask() 
     }
     saveTasks(){
-        localStorage.setItem('tasks', JSON.stringify(this.tasks))
+        localStorage.setItem('taskManager', JSON.stringify(this.tasks))
     }
     loadTasks(){
-        this.tasks  = JSON.parse(localStorage.getItem('tasks')) || []     
+        const tasks = localStorage.getItem('taskManager');
+        return tasks ? JSON.parse(tasks) : null;   
     }
 
    displayTask(){
