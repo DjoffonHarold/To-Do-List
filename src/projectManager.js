@@ -1,25 +1,44 @@
-import Project from "./project.js"
-import todayImg from './todayImg.png'
+
+import TaskManager from "./taskManager.js"
+class Project{
+    constructor(name){
+         this.name = name
+        
+         
+    }
+}
 class ProjectManager{
     constructor(){
-        this.projects = []
+        this.projects = this.loadProjects() || []
     }
 
     addProject(name){
         const project = new Project(name)
         this.projects.push(project)
+        this.saveProjects()
         this.displayProject()
     }
 
     editProject(index, newName){
         const project = this.projects[index]
         project.name =  newName
+        this.saveProjects()
         this.displayProject()
     }
 
     deleteProject(index){
         this.projects.splice(index,1)
+        this.saveProjects()
         this.displayProject()
+    }
+
+    saveProjects(){
+        localStorage.setItem('projectManager', JSON.stringify(this.projects))
+    }
+    
+    loadProjects(){
+        const projects = localStorage.getItem('projectManager')
+        return projects? JSON.parse(projects) : null
     }
 
     displayProject(){
@@ -30,13 +49,14 @@ class ProjectManager{
             const projectItem = document.createElement('div')
             projectItem.classList.add('projectItem')
 
-           /* projectItem.addEventListener('click',()=>{
+            projectItem.addEventListener('click',()=>{
                 const tasksList = document.querySelector('#tasks-list')
                 while(tasksList.firstChild) { 
                     tasksList.removeChild(tasksList.firstChild); 
                 }
-                tasksList.appendChild(taskItem)
-            })*/
+                const newTasksList = document.createElement('div')
+               
+            })   
 
             const NameSpan = document.createElement("span")
             NameSpan.textContent = `${project.name}`;
