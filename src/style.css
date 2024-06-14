@@ -21,8 +21,11 @@
   }
   /***************************************/
   .container{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+    /*display: grid;
+    grid-template-columns: repeat(3,1fr);*/
+    display: flex;
+    flex-direction: column;
+    outline: 2px solid red;
   }
   .footer{
     grid-column: 1/4;
@@ -137,6 +140,15 @@
     margin-bottom: 5px;
   }
  
+  .main-body {
+    min-height: 100vh;
+    display: flex;
+  }
+  .main-body .sidebar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
 
 
 

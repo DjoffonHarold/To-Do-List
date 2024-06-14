@@ -1,33 +1,21 @@
 
-
-class Task{
-    constructor(title, description,dueDate, priority,){
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.completed = false;
-    }
-
-    switchCompleted(){
-        this.completed = !this.completed
-    }
-
-   
-    
-}
-
- class TaskManager{
+import Task from './task.js'
+import ProjectManager from './projectManager.js';
+ class TaskManager {
     constructor(){
         this.tasks =  this.loadTasks() || [];
         
     }
 
-    addTask(title, description, dueDate, priority){
+    addTask(title, description, dueDate, priority, projectName=null){
         const task = new Task(title, description, dueDate, priority)
-        this.tasks.push(task) 
+        this.tasks.push(task)
+        // Ajouter la tache au projet specifique
+        if(projectName) {
+            ProjectManager.addTaskToProject(projectName, task)
+        }
         this.saveTasks()
-        this.displayTask()      
+        this.displayTask() 
     }
 
     editTask(index, newTitle, newDescription, newDueDate, newPriority){
@@ -59,9 +47,10 @@ class Task{
         return tasks ? JSON.parse(tasks) : null;   
     }
 
-   displayTask(){
+
+    displayTask(){
     const tasksList = document.querySelector('.tasks-list')
-    tasksList.innerHTML = " ";
+    tasksList.innerHTML = " "
 
     this.tasks.forEach((task, index)=>{
         const taskItem = document.createElement('li')
@@ -126,9 +115,11 @@ class Task{
         
     })
     
-   }
+}
 
- }
+  
+
+}
 export default TaskManager
 
 

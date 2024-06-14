@@ -3,7 +3,7 @@ import TaskManager from './taskManager.js'
 import ProjectManager from './projectManager.js'
 
 function initialLoad(){
-        
+   
  
 /*taskManager.addTask("Fitness club", "Go to gym","07/06/2024", "high")
 taskManager.addTask("Fitness club", "Go to gym","07/06/2024", "high")
@@ -24,10 +24,10 @@ document.getElementById('close-dialog-side').addEventListener('click', function(
   document.getElementById('open-dialog-project').close();
 });
 
-    const projectManager = new ProjectManager()
-   
-    projectManager.displayProject();
-    document.getElementById('task-form-side').addEventListener('submit', function(event) {
+const projectManager = new ProjectManager()
+projectManager.displayProject();
+
+document.getElementById('task-form-side').addEventListener('submit', function(event) {
       event.preventDefault();
     
       const name = document.getElementById('project').value;
@@ -41,8 +41,8 @@ document.getElementById('close-dialog-side').addEventListener('click', function(
     });
   
 
-    const taskManager = new TaskManager();
-    taskManager.displayTask();
+const taskManager = new TaskManager();
+taskManager.displayTask();
     document.getElementById('task-form').addEventListener('submit', function(event) {
         event.preventDefault();
       
