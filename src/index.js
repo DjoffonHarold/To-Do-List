@@ -7,7 +7,16 @@ import TaskManager from './taskManager';
 document.addEventListener('DOMContentLoaded', () => {
     const taskManager = new TaskManager();
     taskManager.renderProjects();
-   
+    
+    const sidebar = document.getElementById('sideleftbar');
+    const sidebarContent = document.getElementById('sidebar-content');
+    const toggleButton = document.getElementById('toggle-sidebar');
+
+    toggleButton.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        sidebar.classList.toggle('closed');
+    });
+
     function openAddProjectDialog() {
         document.getElementById('open-dialog-project').showModal();
     }

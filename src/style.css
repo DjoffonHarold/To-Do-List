@@ -74,8 +74,11 @@
     padding-top: 25px;
     padding-left: 25px;
     background-color: #e5e5e5;
-    
+    position: relative;
+    transition: width 0.6ms ease;
+  
   }
+
   .form{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -172,6 +175,41 @@
     border-radius: 5px;
     background-color: #16a34a
   }
+ 
+
+.sidebar-content {
+    /*display: none;
+    flex-direction: column;*/
+}
+
+.sideleftbar.open .sidebar-content {
+    display: flex;
+}
+.sideleftbar.closed .sidebar-content{
+  display: none;
+  flex-direction: column;
+}
+
+.toggle-sidebar {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+   /* width: 100%;*/
+}
+
+.toggle-sidebar:hover {
+    background-color: #2980b9;
+}
+.sideleftbar.open {
+  width: 600px;
+}
+
+.sideleftbar.closed {
+  width: 0px;
+  
+}
 
  
   
