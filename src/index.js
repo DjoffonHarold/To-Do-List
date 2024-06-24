@@ -1,83 +1,97 @@
 import './style.css'
-import initialLoad from './loadPage'
-initialLoad()
-//Window.addEventListener("localStorage", initialLoad())
-
-
 /*
-const submit = document.querySelector('.buttonAddTask')
+import {initialLoad} from './loadPage'
+initialLoad()*/
+import TaskManager from './taskManager';
 
-submit.addEventListener('click', (event)=>{
-    event.preventDefault();
-    const title = document.getElementById('title').Value
-    const description = document.getElementById('description').Value
-    const dueDate = document.getElementById('due-date').Value
-    const priority = document.getElementById('priority').Value
-    if(title && description && dueDate && priority){
-        taskManager.addTask(title, description, dueDate, priority)  ;
-        taskManager.displayTask()
-         
+document.addEventListener('DOMContentLoaded', () => {
+    const taskManager = new TaskManager();
+    taskManager.renderProjects();
+   
+    function openAddProjectDialog() {
+        document.getElementById('open-dialog-project').showModal();
     }
-})*/
 
+   /* function openAddTaskDialog(projectName) {
+        document.getElementById('task-dialog').showModal();
+        document.getElementById('taskIdInput').value = '';
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('due-date').value = '';
+        document.getElementById('priority').value = 'medium';
+        document.getElementById('project').value = projectName;
+    }*/
 
+    /*function openEditTaskDialog(taskId, projectName) {
+        const project = taskManager.getProjectByName(projectName);
+        if (project) {
+            const task = project.tasks.find(task => task.id === taskId);
+            if (task) {
+                document.getElementById('taskIdInput').value = task.id;
+                document.getElementById('title').value = task.title;
+                document.getElementById('description').value = task.description;
+                document.getElementById('due-date').value = task.dueDate;
+                document.getElementById('priority').value = task.priority;
+                document.getElementById('project').value = projectName;
+                document.getElementById('task-dialog').showModal();
+            }
+        }
+    }*/
 
+    function deleteTask(taskId, projectName) {
+        taskManager.deleteTask(taskId, projectName);
+    }
 
+    function toggleTaskCompletion(taskId, projectName, completed) {
+        taskManager.toggleTaskCompletion(taskId, projectName, completed);
+    }
 
+    document.getElementById('open-dialog-side').addEventListener('click', openAddProjectDialog);
+    //document.getElementById('add-task-button').addEventListener('click',openAddTaskDialog)
+  
 
-
-
-
-/*// Function to render tasks
-const taskManager = new TaskManager();
-function renderTasks() {
-  const content = document.querySelector('.content')  
-  const tasksList = document.getElementById('tasks-list');
-  tasksList.innerHTML = '';
-
-  taskManager.getTasks().forEach((task, index) => {
-    const taskItem = document.createElement('li');
-    taskItem.innerHTML = `
-      <input type="checkbox" id="task${index}" ${task.completed ? 'checked' : ''}>
-      <label for="task${index}">${task.title}</label>
-      <button class="delete-btn">Delete</button>
-    `;
-
-    // Add event listener to toggle completion status
-    const checkbox = taskItem.querySelector('input[type="checkbox"]');
-    checkbox.addEventListener('change', () => {
-      taskManager.toggleTask(index);
-      renderTasks();
+    document.getElementById('project-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const projectName = document.getElementById('project-name').value.trim();
+        if (projectName) {
+            taskManager.createProject(projectName);
+           
+            document.getElementById('open-dialog-project').close();
+        }
     });
 
-    // Add event listener to delete task
-    const deleteButton = taskItem.querySelector('.delete-btn');
-    deleteButton.addEventListener('click', () => {
-      taskManager.deleteTask(index);
-      renderTasks();
+    document.getElementById('task-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const taskId = document.getElementById('taskIdInput').value;
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const dueDate = document.getElementById('due-date').value;
+        const priority = document.getElementById('priority').value;
+        const projectName = document.getElementById('project').value;
+        const completed = false;
+        if (taskId) {
+            taskManager.editTask(parseInt(taskId), title, description, dueDate, priority, projectName, completed);
+        } else {
+      taskManager.addTaskToProject(projectName, title, description, dueDate, priority);
+        }
+        
+        document.getElementById('task-dialog').close();
     });
 
-    tasksList.appendChild(taskItem);
-    content.appendChild(tasksList)
-  });
-}
+    document.getElementById('confirm-edit-project').addEventListener('click', () => {
+        const oldProjectName = document.getElementById('old-project-name').value;
+        const newProjectName = document.getElementById('new-project-name').value;
+        if (newProjectName) {
+            taskManager.editProject(oldProjectName, newProjectName);
+            document.getElementById('edit-project-dialog').close();
+        }
+    });
 
-// Add event listener to form submission
-const taskForm = document.getElementById('task-form');
-taskForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const title = document.getElementById('title').value;
-  const description = document.getElementById('description').value;
-  const dueDate = document.getElementById('due-date').value;
-  const priority = document.getElementById('priority').value;
-  taskManager.addTask(title, description, dueDate, priority);
-  renderTasks();
-  taskForm.reset();
+    document.getElementById('close-dialog').addEventListener('click', () => {
+        document.getElementById('task-dialog').close();
+    });
+
+    document.getElementById('close-dialog-side').addEventListener('click', () => {
+        document.getElementById('open-dialog-project').close();
+    });
 });
-
-
-
-
-// Initial rendering
-renderTasks();
-*/

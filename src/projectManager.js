@@ -1,4 +1,51 @@
 import Project from './project.js'
+import Task from './task.js';
+class ProjectManager{
+    constructor(){
+        /// this.tasks =  this.loadTasks() || [];
+         this.projects = [];
+         this.defaultProject = new Project("Default Project")
+         this.projects.push(this.defaultProject);
+         this.taskIdCounter = 1;
+         this.selectedProject = null;
+     }
+ 
+     createProject(name){
+         const newProject = new Project(name)
+         this.projects.push(newProject)
+         this.displayProject()
+         return newProject
+     }
+ 
+     addTaskToProject(projectName, title, description, dueDate, priority) {
+         const project = this.getProjectByName(projectName);
+         if (project) {
+             const newTask = new Task(this.taskIdCounter++, title, description, dueDate, priority);
+             project.addTask(newTask);
+             this.displayTask(projectName);
+         }
+     }
+     
+     getProjectByName(name) {
+         return this.projects.find(project => project.name === name);
+     }
+ 
+     displayProject() {
+         const projectList = document.getElementById('tasks-list-side');
+         projectList.innerHTML = '';
+         this.projects.forEach(project => {
+             const projectItem = document.createElement('li');
+             projectItem.textContent = project.name;
+             projectItem.addEventListener('click', () => this.selectProject(project.name));
+             projectList.appendChild(projectItem);
+         });
+     }
+ 
+}
+export default ProjectManager
+/*
+import Project from './project.js'
+
 class ProjectManager{
     constructor(){
         this.projects = this.loadProjects() || []
@@ -34,19 +81,6 @@ class ProjectManager{
         return projects? JSON.parse(projects) : null
     }
 
-
-    static addTaskToProject (projectName, task) {
-        const tasksProject = JSON.parse(localStorage.getItem(`${projectName}-tasks`))
-        if (tasksProject){
-            tasksProject.push(task)
-            // enregister les taches du projets
-            localStorage.setItem(`${projectName}-task`, JSON.stringify(tasksProject))
-        }
-    }
-
-
-
-
     
 
     displayProject(){
@@ -58,7 +92,7 @@ class ProjectManager{
         projectItem.classList.add('projectItem')
 
         projectItem.addEventListener('click',()=>{
-               
+            
             
         })   
 
@@ -68,7 +102,7 @@ class ProjectManager{
 
         const editProjectButton = document.createElement("button")
         editProjectButton.classList.add("editProjectButton")
-        editProjectButton.textContent = 'edit'
+        editProjectButton.textContent = '🖊️'
         editProjectButton.style.cursor = 'pointer';
         editProjectButton.style.marginLeft = '10px'
         editProjectButton.addEventListener('click', ()=>{
@@ -78,7 +112,7 @@ class ProjectManager{
 
         const deleteProjectButton = document.createElement("button")
         deleteProjectButton.classList.add("deleteProjectButton")
-        deleteProjectButton.textContent = 'delete'
+        deleteProjectButton.textContent = '❎'
         deleteProjectButton.style.cursor = 'pointer';
         deleteProjectButton.style.marginLeft = '10px'
         deleteProjectButton.addEventListener('click', ()=>{
@@ -99,4 +133,4 @@ class ProjectManager{
 
    
 }
-export default ProjectManager
+export default ProjectManager*/

@@ -1,15 +1,33 @@
-
-class Task{
-    constructor(title, description,dueDate, priority,){
+export default class Task {
+    constructor(id, title, description, dueDate, priority, completed = false) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.completed = false;
+        this.completed = completed;
+    }
+}
+
+
+
+
+
+
+
+
+/*
+class Task{
+    constructor(title, description,dueDate, priority, project, completed = false){
+        
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.project = project;
+        this.completed = completed;
     }
 
-    switchCompleted(){
-        this.completed = !this.completed
-    }   
+     
 }
-export default Task
+export default Task*/

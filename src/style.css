@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'exoregular';
+  src: url('exo-regular-webfont.woff2') format('woff2'),
+       url('exo-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -8,6 +16,7 @@
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-family: 'exoregular';
   }
   img, picture, video, canvas, svg {
     display: block;
@@ -19,13 +28,13 @@
   p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
   }
-  /***************************************/
+ /***********************/ 
+
   .container{
-    /*display: grid;
-    grid-template-columns: repeat(3,1fr);*/
-    display: flex;
-    flex-direction: column;
-    outline: 2px solid red;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    font-size: 20px;
+    
   }
   .footer{
     grid-column: 1/4;
@@ -44,11 +53,16 @@
     grid-column: 2/4;
     background-color: #f0fdf4;
   }
-  .buttonSide,
+  .buttonSide{
+    border: none;
+    border-radius: 5px;
+    background-color: #22c55e;
+  }
   .buttonSideLeftBar{
     border: none;
     border-radius: 5px;
     background-color: #22c55e;
+    margin-top: 25px;
   }
   .buttonAddTask-side,
   .buttonAddTask{
@@ -107,7 +121,7 @@
   border-radius: 10px;
   }
   dialog {
-  /*display: none;*/
+  display: none;
   }
   .taskItem{
     gap: 15px;
@@ -125,30 +139,42 @@
     border-radius: 5px;
     background-color: #dc2626
   }
-  .editProjectButton,
-  .editButton{
+  .delete-task-button{
+    border: none;
+    border-radius: 5px;
+    background-color: #dc2626
+  }
+  .edit-task-button{
     border: none;
     border-radius: 5px;
     background-color: #16a34a
   }
   .projectItem:hover{
-      background-color: #9ca3af;
-      
-      
+    background-color: #7dd3fc;     
   }
-  .projectItem{
-    margin-bottom: 5px;
+  .editProject{
+    border: none;
+    border-radius: 5px;
+    background-color: #16a34a
   }
+  .deleteProject{
+    border: none;
+    border-radius: 5px;
+    background-color: #dc2626
+  }
+  .item:hover{
+    background-color: #7dd3fc;
+    max-width: 300px;
+   
+  }
+  .Edit{
+    border: none;
+    border-radius: 5px;
+    background-color: #16a34a
+  }
+
  
-  .main-body {
-    min-height: 100vh;
-    display: flex;
-  }
-  .main-body .sidebar {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-  }
+  
 
 
 
