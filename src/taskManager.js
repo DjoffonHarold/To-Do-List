@@ -74,17 +74,17 @@ export default class TaskManager {
         
     }
 
-    initializeDefaultProject() {
+   /* initializeDefaultProject() {
         const defaultProject = this.createProject('Default Project');
         this.addTaskToProject('Default Project', 'Default Task', 'This is a default task description', '2024-12-31', 'medium');
         this.selectedProject = defaultProject.name;
         this.renderTasks(defaultProject.name);
-    }
+    }*/
     
 
     renderProjects() {
         const projectList = document.getElementById('projects-list');
-        const projectsDropdown = document.getElementById('projects-dropdown')
+       
         projectList.innerHTML = " ";
        
 
