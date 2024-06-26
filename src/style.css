@@ -89,6 +89,12 @@
     border-radius: 5px;
     background-color: #bbf7d0;
   }
+  input:invalid{
+    color: red;
+  }
+  input:valid{
+    color: #16a34a;
+  }
   .close-form-side,
   .close-form{
     border: none;

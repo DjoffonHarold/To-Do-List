@@ -227,6 +227,7 @@ export default class TaskManager {
     }
         document.getElementById('add-task-button').addEventListener('click', () => openAddTaskDialog(projectName));
     }
+    
     openEditTaskDialog(taskId, projectName) {
         const project = this.getProjectByName(projectName);
         if (project) {
